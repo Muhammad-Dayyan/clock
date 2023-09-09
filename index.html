@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLOCK</title>
+</head>
+<style>
+    body {
+        margin: 200px;
+        height: 100vh;
+        background-color: lightpink;
+    }
+
+    #clockDisplay {
+        margin: 0px auto;
+        width: 400px;
+        background-color: #1e1e1e;
+        height: 100px;
+        padding: 6px;
+        text-align: center;
+        color: white;
+        font-size: 25px;
+    }
+</style>
+
+<body>
+    
+    <div id="clockDisplay" class="clockStyle">
+    <h1 id="heading"></h1>
+
+    </div>
+</body>
+
+</html>
+<script>
+    function renderTime() {
+        var currentTime = new Date()
+        var dem = "AM"
+        var h="Good Morning"
+        var h = currentTime.getHours();
+        var m = currentTime.getMinutes();
+        var s = currentTime.getSeconds();
+
+
+
+        if (h == 0) {
+            h = 12
+        } else if (h > 12) {
+            h = h - 12
+            dem = "PM"
+            di="Good Night"
+        } 
+        // else if(h>3){
+        //     h = h-12
+        //     dem="PM"
+        //     di="Good Evening"
+        // }
+
+
+        if (h < 10) {
+
+            h = "0" + h
+        }
+
+
+
+        if (m < 10) {
+
+            m = "0" + m
+        }
+
+
+        if (s < 10) {
+
+            s = "0" + s
+        }
+
+    
+        var myClock = document.getElementById('clockDisplay')
+        myClock.textContent = h + ":" + m + ":" + s + " " + dem +" "+di
+        setTimeout('renderTime()', 1000)
+
+        
+    }
+    renderTime()
+
+
+    
+</script>
